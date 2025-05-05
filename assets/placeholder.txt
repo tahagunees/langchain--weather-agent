@@ -1,0 +1,4 @@
+Bu dizine aşağıdaki görselleri eklemelisiniz:
+- home.png - Ana sayfa ekran görüntüsü
+- results.png - Sonuçlar sayfası ekran görüntüsü
+- demo.gif - Uygulama demo videosu 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hava Durumu Kıyafet Öneri Ajanı</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-cloud-sun"></i> Hava Durumu Kıyafet Öneri Ajanı</h1>
+            <p>Hava durumuna göre kıyafet önerileri alın ve şık kalın</p>
+        </header>
+        
+        <div class="search-container">
+            <input type="text" id="locationInput" placeholder="Şehir adı girin (örn. Istanbul)" autofocus />
+            <button id="searchButton"><i class="fas fa-search"></i> Ara</button>
+        </div>
+        
+        <div id="loading" class="hidden">
+            <div class="spinner"></div>
+            <p>Hava durumu ve kıyafet önerileri alınıyor...</p>
+        </div>
+        
+        <div id="result" class="hidden">
+            <h2><i class="fas fa-sun"></i> Hava Durumu</h2>
+            <div id="weatherInfo"></div>
+            
+            <h2><i class="fas fa-tshirt"></i> Kıyafet Önerileri</h2>
+            <div id="recommendations"></div>
+        </div>
+        
+        <div id="error" class="hidden">
+            <p id="errorMessage"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Yapay Zeka destekli Hava Durumu ve Kıyafet Öneri Ajanı &copy; 2025</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html> 

@@ -1,0 +1,322 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #3498db;
+    --primary-dark: #2980b9;
+    --secondary-color: #e74c3c;
+    --light-color: #f8f9fa;
+    --dark-color: #2c3e50;
+    --success-color: #27ae60;
+    --warning-color: #f39c12;
+    --white: #ffffff;
+    --border-radius: 8px;
+    --box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: #333;
+    min-height: 100vh;
+    padding: 20px 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: var(--white);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    margin-top: 20px;
+    transition: var(--transition);
+}
+
+h1 {
+    color: var(--dark-color);
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 2.2rem;
+}
+
+h2 {
+    color: var(--dark-color);
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+p {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #666;
+}
+
+.search-container {
+    display: flex;
+    margin-bottom: 30px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.search-container input {
+    flex: 1;
+    padding: 15px;
+    border: 1px solid #e1e1e1;
+    border-right: none;
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+    font-size: 16px;
+    outline: none;
+    transition: var(--transition);
+}
+
+.search-container input:focus {
+    border-color: var(--primary-color);
+}
+
+.search-container button {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 15px 25px;
+    cursor: pointer;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    font-size: 16px;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.search-container button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+#result {
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 30px;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#weatherInfo, #recommendations {
+    background-color: var(--light-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+    min-height: 100px;
+    position: relative;
+    transition: var(--transition);
+}
+
+#weatherInfo:hover, #recommendations:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+#weatherInfo {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+#recommendations {
+    padding: 20px;
+    background-color: #e8f4f8;
+    border-radius: var(--border-radius);
+    line-height: 1.8;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+#recommendations p {
+    text-align: left;
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+}
+
+#recommendations p:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+#recommendations strong {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: var(--dark-color);
+}
+
+.hidden {
+    display: none;
+}
+
+#loading {
+    text-align: center;
+    padding: 30px;
+}
+
+.spinner {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top-color: var(--primary-color);
+    animation: spin 1s ease-in-out infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+#error {
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 15px;
+    background-color: #fadbd8;
+    border-radius: var(--border-radius);
+    margin-top: 20px;
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .search-container {
+        flex-direction: column;
+    }
+    
+    .search-container input {
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
+        border-right: 1px solid #e1e1e1;
+        border-bottom: none;
+    }
+    
+    .search-container button {
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
+    }
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 15px;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Add hover effects for better interaction */
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Weather icons styling */
+.fas {
+    margin-right: 8px;
+    color: var(--primary-color);
+}
+
+.fa-cloud-sun {
+    color: var(--warning-color);
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+.fa-sun {
+    color: var(--warning-color);
+}
+
+.fa-tshirt {
+    color: var(--success-color);
+}
+
+.fa-search {
+    margin-right: 5px;
+}
+
+/* Improve recommendations styling */
+#recommendations {
+    background: linear-gradient(to right, #e8f4f8, #d7e9f5);
+}
+
+/* Add animation for the search box */
+.search-container:focus-within {
+    transform: scale(1.01);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Better styling for mobile */
+@media screen and (max-width: 600px) {
+    body {
+        padding: 10px 0;
+    }
+}
+
+/* Pulse animation for the search button */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); box-shadow: 0 0 10px rgba(52, 152, 219, 0.7); }
+    100% { transform: scale(1); }
+}
+
+.pulse {
+    animation: pulse 0.5s ease infinite;
+}
+
+/* Better spacing for result sections */
+#result h2 {
+    margin-top: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+}
+
+/* Style for the info icon */
+.fa-info-circle {
+    color: var(--primary-color);
+}
+
+/* Add a special class for highlighted weather display */
+.weather-highlight {
+    background-color: rgba(52, 152, 219, 0.1);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: 500;
+    color: var(--dark-color);
+    display: inline-block;
+    margin: 5px 0;
+} 
